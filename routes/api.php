@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\RankingController;
+use App\Http\Controllers\Api\ScoreController;
 use Illuminate\Support\Facades\Route;
 
 Route::prefix('auth')->group(function () {
@@ -11,5 +12,9 @@ Route::prefix('auth')->group(function () {
 
 Route::prefix('ranking')->group(function () {
     Route::post('', [RankingController::class, 'ranking']);
-    Route::post('submit', [RankingController::class, 'submit']);
+});
+
+Route::prefix('score')->group(function () {
+    Route::post('submit', [ScoreController::class, 'submit']);
+    Route::post('get',[ScoreController::class, 'get']);
 });

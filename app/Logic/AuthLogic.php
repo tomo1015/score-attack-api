@@ -38,7 +38,7 @@ class AuthLogic extends Base
 
     public function login()
     {
-        $user = User::getUser($this->getRequest()->input('email'));
+        $user = User::getUserByEmail($this->getRequest()->input('email'));
         if ($user === null) {
             throw new \Exception('user data is not found');
         }
