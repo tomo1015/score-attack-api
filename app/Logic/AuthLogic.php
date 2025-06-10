@@ -20,13 +20,13 @@ class AuthLogic extends Base
             'score' => 0,//スコア0
         ]);
 
-        try{
+        try {
             DB::connection()->beginTransaction();
 
             $user->save();
 
             DB::connection()->commit();
-        } catch (\Exception $exception){
+        } catch (\Exception $exception) {
             DB::connection()->rollBack();
             throw new \Exception('update db transaction failed');
         }
@@ -39,12 +39,12 @@ class AuthLogic extends Base
     public function login()
     {
         $user = User::getUser($this->getRequest()->input('email'));
-        if($user === null){
+        if ($user === null) {
             throw new \Exception('user data is not found');
         }
 
         return [
             'is_ok' => true
-        ]
+        ];
     }
 }
