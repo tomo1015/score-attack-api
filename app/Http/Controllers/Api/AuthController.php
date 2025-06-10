@@ -32,7 +32,7 @@ class AuthController extends Controller
      * @return array
      * @throws \Exception
      */
-    public function login(Request $request)
+    public function login(Request $request): array
     {
         $this->logic->setRequest($request);
         return $this->logic->login();
