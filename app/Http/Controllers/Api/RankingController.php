@@ -16,14 +16,4 @@ class RankingController extends Controller
     {
 
     }
-
-    /**
-     * ランキング登録
-     * @param Request $request
-     * @return void
-     */
-    public function submit(Request $request)
-    {
-
-    }
 }

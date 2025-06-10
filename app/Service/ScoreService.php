@@ -12,7 +12,7 @@ class ScoreService
     /**
      * @throws \Throwable
      */
-    public function submitScore(User $user, int $score)
+    public function submitScore(User $user, int $score): array
     {
         $score = Score::createNoSave([
             'user_id', $user->user_id,
@@ -33,6 +33,9 @@ class ScoreService
         //Redisのキャッシュ更新
         Redis::add('ranking', $score, $user->user_id);
 
-        return $user;
+        return [
+            'user_id' => $user->user_id,
+            'score' => $score
+        ];
     }
 }
