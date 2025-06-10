@@ -26,7 +26,7 @@ class ScoreLogic extends Base
         $user = User::getUserByUserId($user_id);
 
         $this->service->submitScore($user, $score);
-        
+
         return [];
     }
 }
