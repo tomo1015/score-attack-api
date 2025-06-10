@@ -12,12 +12,14 @@ class User extends ModelBase
 
     protected $fillable = [
         'name',
+        'email',
+        'score'
     ];
 
-    public function getUser()
+    public static function getUser(string $email)
     {
         return self::w()
-            ->where('user_id')
+            ->where('email', $email)
             ->first();
     }
 }
