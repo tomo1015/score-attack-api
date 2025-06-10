@@ -10,11 +10,14 @@ Route::prefix('auth')->group(function () {
     Route::post('login', [AuthController::class, 'login']);
 });
 
-Route::prefix('ranking')->group(function () {
-    Route::post('', [RankingController::class, 'ranking']);
-});
 
-Route::prefix('score')->group(function () {
-    Route::post('submit', [ScoreController::class, 'submit']);
-    Route::post('get',[ScoreController::class, 'get']);
+Route::group(['middleware' => 'controller.auth'], function () {
+    Route::prefix('ranking')->group(function () {
+        Route::post('', [RankingController::class, 'ranking']);
+    });
+
+    Route::prefix('score')->group(function () {
+        Route::post('submit', [ScoreController::class, 'submit']);
+        Route::post('get',[ScoreController::class, 'get']);
+    });
 });
